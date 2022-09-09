@@ -1,1 +1,26 @@
 <p>reportes works!</p>
+
+<form action="" [formGroup]="productosForm" (ngSubmit)="enviar()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Precio</mat-label>
+    <input type="number" matInput formControlName="precio" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" formArrayName="colores">
+    <mat-label>Precio</mat-label>
+    <input matInput formControlName="0" />
+  </mat-form-field>
+  <button type="submit" mat-button>Enviar datos</button>
+</form>
+
+<button mat-button (click)="recuperar()">Recuperar datos</button>
+
+<div *ngFor="let producto of productos">
+  <div class="tarjetas">
+    <p>{{ producto.nombre }} - {{ producto.precio }}</p>
+    <button mat-button (click)="onClickDelete(producto)">Eliminar</button>
+  </div>
+</div>
