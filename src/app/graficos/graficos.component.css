@@ -1,0 +1,14 @@
+.colores{
+    display: flex;
+    margin: 10px;
+}
+.mrg{
+    margin: 5px;
+}
+
+.com{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: space-between;
+    gap: 20px;
+}

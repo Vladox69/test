@@ -1,1 +1,49 @@
-<p>graficos works!</p>
+<div class="com">
+    <!--
+  <div class="colores" *ngFor="let color of colores">
+    <div class="mrg">
+      <p>{{ color.id }} - {{ color.nombre }} - {{ color.valor_hex }}</p>
+    </div>
+    <div class="mrg">
+      <button mat-raised-button color="primary" (click)="getColorById(color)">
+        Editar datos
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteColor(color)">
+        Borrar datos
+      </button>
+    </div>
+  </div>
+   
+  <div >
+    <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let color of colores" [value]="color.id">
+            {{color.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+ -->
+</div>
+
+<form action="" [formGroup]="formColores" (ngSubmit)="enviar()">
+    <mat-form-field appearance="fill">
+        <mat-label>Ejemplo</mat-label>
+        <input matInput formControlName="ejem" />
+    </mat-form-field>
+    <div>
+        <ng-container formArrayName="coloresArr">
+            <mat-form-field *ngFor="let col of coloresArr.controls; let i = index" appearance="fill">
+                <mat-label>Colores</mat-label>
+                <mat-select [formControlName]="i">
+                    <mat-option *ngFor="let color of colores" [value]="color.id">
+                        {{ color.nombre }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ng-container>
+        <button mat-raised-button color="warn" (click)="addColor()" >Agregar color</button>
+    </div>
+    <button type="submit" mat-raised-button color="accent"  >Enviar</button>
+</form>
