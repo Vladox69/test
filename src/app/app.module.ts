@@ -8,18 +8,22 @@ import { MaterialModule } from './material/material.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { GraficosComponent } from './graficos/graficos.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ListProductosComponent } from './productos/list-productos/list-productos.component';
+import { CreateProductosComponent } from './productos/create-productos/create-productos.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     ReportesComponent,
-    GraficosComponent
+    GraficosComponent,
+    ListProductosComponent,
+    CreateProductosComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

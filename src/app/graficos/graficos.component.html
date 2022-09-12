@@ -1,5 +1,5 @@
 <div class="com">
-    <!--
+  <!--
   <div class="colores" *ngFor="let color of colores">
     <div class="mrg">
       <p>{{ color.id }} - {{ color.nombre }} - {{ color.valor_hex }}</p>
@@ -26,24 +26,79 @@
   </div>
  -->
 </div>
-
-<form action="" [formGroup]="formColores" (ngSubmit)="enviar()">
+<!--
+<form [formGroup]="formColores" (ngSubmit)="enviar()">
     <mat-form-field appearance="fill">
         <mat-label>Ejemplo</mat-label>
         <input matInput formControlName="ejem" />
     </mat-form-field>
     <div>
         <ng-container formArrayName="coloresArr">
-            <mat-form-field *ngFor="let col of coloresArr.controls; let i = index" appearance="fill">
-                <mat-label>Colores</mat-label>
-                <mat-select [formControlName]="i">
-                    <mat-option *ngFor="let color of colores" [value]="color.id">
-                        {{ color.nombre }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+            <div class="selects">
+                <mat-form-field class="select" *ngFor="let col of coloresArr.controls; let i = index" appearance="fill">
+                    <mat-label>Colores</mat-label>
+                    <mat-select  [formControlName]="i">
+                        <mat-option *ngFor="let color of colores" [value]="color.id">
+                            {{ color.nombre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </ng-container>
-        <button mat-raised-button color="warn" (click)="addColor()" >Agregar color</button>
+        <button mat-raised-button color="warn" (click)="addColor()">
+            Agregar color
+        </button>
     </div>
-    <button type="submit" mat-raised-button color="accent"  >Enviar</button>
+    <button type="submit" mat-raised-button color="accent">Enviar</button>
 </form>
+-->
+
+<div class="container">
+  <form class="formulario" action="" [formGroup]="formProducto">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="precio" />
+    </mat-form-field>
+    <div>
+      <ng-container formArrayName="colores">
+        <div *ngFor="let col of colores.controls; let i = index" class="selects">
+          <div class="selects-buttons">
+            <mat-form-field class="select" appearance="outline">
+              <mat-label>Colores</mat-label>
+              <mat-select [formControlName]="i">
+                <mat-option *ngFor="let color of _colores" [value]="color.id">
+                  {{ color.nombre }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button class="boton-quitar m-1" mat-raised-button color="warn" (click)="removeColorProd(i)">
+              Quitar color
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button mat-raised-button color="primary" (click)="addColorProd()">
+        Agregar color
+      </button>
+    </div>
+  </form>
+  <div class="btn-enviar mt-2">
+    <button (click)="enviarProducto()" mat-raised-button color="accent">
+      Enviar
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div  *ngFor="let producto of _productos">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput readonly [value]="producto.nombre" />
+    </mat-form-field>
+    <button class="ms-2" mat-raised-button color="primary" (click)="getProductoById(producto.id!)">Obtener</button>
+  </div>
+</div>

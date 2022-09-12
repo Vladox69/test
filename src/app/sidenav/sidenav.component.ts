@@ -21,6 +21,11 @@ export class SidenavComponent implements OnDestroy  {
       route: "/graficos",
       icon: "assessment",
     },
+    {
+      name:"Productos",
+      route:"/productos",
+      icon:"assignment"
+    }
   ];
 
   private _mobileQueryListener: () => void;

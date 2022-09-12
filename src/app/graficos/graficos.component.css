@@ -12,3 +12,30 @@
     justify-content: space-between;
     gap: 20px;
 }
+
+.selects{
+    display: flex;
+    flex-direction: column;
+}
+
+.select{
+    width: 250px;
+}
+
+.container{
+    width: 500px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.boton-quitar{
+    width: 150px;
+}
+
+.btn-enviar{
+    display: flex;
+    justify-content: end;
+}

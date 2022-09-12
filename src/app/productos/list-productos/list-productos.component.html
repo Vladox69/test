@@ -1,0 +1,19 @@
+<div class="container">
+    <button class="m-2" mat-raised-button color="warn" (click)="nuevoProducto()">
+        Nuevo Producto
+    </button>
+        <input  type="file" accept=".png .jpg jpeg" (change)="imageUpload($event)"/>
+        <input type="text" hidden [value]="urlImage|async">
+    <div *ngFor="let producto of productos">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput readonly [value]="producto.nombre" />
+        </mat-form-field>
+        <button class="ms-2" mat-raised-button color="warn" (click)="eliminarProducto(producto.id!)">
+            Eliminar Producto
+        </button>
+        <button class="ms-2" mat-raised-button color="primary" (click)="editarProducto(producto.id!)">
+            Editar Producto
+        </button>
+    </div>
+</div>
