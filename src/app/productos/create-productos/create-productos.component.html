@@ -1,24 +1,29 @@
 <div class="container">
-    <form class="formulario" action="" [formGroup]="formProducto">
-      <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Precio</mat-label>
-        <input type="number" matInput formControlName="precio" />
-      </mat-form-field>
-      <input type="file" (change)="imageUpload($event)"/>
-      <input type="text" hidden formControlName="urlImage" [value]="filePath" >
-      <div>
-        <ng-container formArrayName="colores">
-          <div *ngFor="let col of colores.controls; let i = index" class="selects">
-            <div class="selects-buttons">
+  <form class="formulario" action="" [formGroup]="formProducto">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="precio" />
+    </mat-form-field>
+    <input type="file" (change)="imageUpload($event)" />
+    <img class="imagen-prod" src={{imagenStr}} alt="">
+    <input type="text" hidden formControlName="urlImage" [value]="filePath">
+    <div>
+      <ng-container formArrayName="colores">
+        <div *ngFor="let col of colores.controls; let i = index" class="selects">
+          <div class="selects-buttons">
+            <div class="select-color">
               <mat-form-field class="select" appearance="outline">
                 <mat-label>Colores</mat-label>
                 <mat-select [formControlName]="i">
                   <mat-option *ngFor="let color of _colores" [value]="color.id">
                     {{ color.nombre }}
+                    <div class="line-color" [ngStyle]="{'background-color': color.valor_hex}">
+                    </div>
+                    <input type="text" hidden  [value]="color.valor_hex" >
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -27,15 +32,16 @@
               </button>
             </div>
           </div>
-        </ng-container>
-        <button mat-raised-button color="primary" (click)="addColorProd()">
-          Agregar color
-        </button>
-      </div>
-    </form>
-    <div class="btn-enviar mt-2">
-      <button (click)="enviarProducto()" mat-raised-button color="accent">
-        Guardar
+        </div>
+      </ng-container>
+      <button mat-raised-button color="primary" (click)="addColorProd()">
+        Agregar color
       </button>
     </div>
+  </form>
+  <div class="btn-enviar mt-2">
+    <button (click)="enviarProducto()" mat-raised-button color="accent">
+      Guardar
+    </button>
   </div>
+</div>

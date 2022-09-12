@@ -19,9 +19,11 @@ export class CreateProductosComponent implements OnInit {
   _colores: Color[] = [];
   uploadPercent!: Observable<number>;
   urlImage!: Observable<string>;
+  imagenStr: string = '';
+  imageChange: boolean = false;
   idImage!: string;
   file: any;
-  filePath!: string;
+  filePath: string = '';
   ref: any;
   task: any;
 
@@ -76,6 +78,7 @@ export class CreateProductosComponent implements OnInit {
       this.producto = response.payload.data() as Producto;
       this.producto.id = this.id!;
       this.setValuesProducto(this.producto);
+      this.imageDownload();
     });
   }
 
@@ -100,6 +103,10 @@ export class CreateProductosComponent implements OnInit {
       this.task.snapshotChanges().pipe(finalize(() => (this.urlImage = this.ref.getDownloadURL()))).subscribe();
       await this.productoService.addProducti(this.formProducto.value);
     } else {
+      if (this.imageChange) {
+        this.task = this.storage.upload(this.filePath, this.file);
+        this.task.snapshotChanges().pipe(finalize(() => (this.urlImage = this.ref.getDownloadURL()))).subscribe();
+      }
       await this.productoService.updateProducto(
         this.id,
         this.formProducto.value
@@ -109,9 +116,23 @@ export class CreateProductosComponent implements OnInit {
   }
 
   imageUpload(evento: any) {
-    this.idImage = Math.random().toString(36).substring(2);
+    if (this.filePath == '') {
+      this.idImage = Math.random().toString(36).substring(2);
+      this.filePath = `upload/file_${this.idImage}`;
+    }
     this.file = evento.target.files[0];
-    this.filePath = `upload/file_${this.idImage}`;
     this.ref = this.storage.ref(this.filePath);
+    this.formProducto.get('urlImage')?.setValue(this.filePath);
+    this.imageChange = true;
   }
+
+  imageDownload() {
+    let rf = this.storage.ref(this.formProducto.get('urlImage')?.value);
+    let url = rf.getDownloadURL();
+    this.filePath = this.formProducto.get('urlImage')?.value;
+    url.subscribe(res => {
+      this.imagenStr = res;
+    });
+  }
+
 }

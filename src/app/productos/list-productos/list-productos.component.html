@@ -2,8 +2,6 @@
     <button class="m-2" mat-raised-button color="warn" (click)="nuevoProducto()">
         Nuevo Producto
     </button>
-        <input  type="file" accept=".png .jpg jpeg" (change)="imageUpload($event)"/>
-        <input type="text" hidden [value]="urlImage|async">
     <div *ngFor="let producto of productos">
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>

@@ -38,11 +38,6 @@ export class ListProductosComponent implements OnInit {
           });
       });
     });
-    let rf=this.storage.ref('upload/file_8rgtgaj74po');
-    let url =rf.getDownloadURL();
-    url.subscribe(res=>{
-      console.log(res);
-    })
   }
 
   nuevoProducto(){
