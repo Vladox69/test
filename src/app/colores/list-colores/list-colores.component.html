@@ -1,0 +1,11 @@
+<div class="container">
+    <button class="m-2" mat-raised-button color="primary" (click)="onClickNuevo()">Nuevo Color</button>
+    <div *ngFor="let color of colores" >
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput readonly [value]="color.nombre" />
+        </mat-form-field>
+        <button class="m-2" mat-raised-button color="warn" (click)="onClickEliminar(color.id)">Eliminar Color</button>
+        <button class="m-2" mat-raised-button color="primary" (click)="onClickEditar(color.id)">Editar Color</button>
+    </div>
+</div>

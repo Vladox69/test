@@ -25,6 +25,11 @@ export class SidenavComponent implements OnDestroy  {
       name:"Productos",
       route:"/productos",
       icon:"assignment"
+    },
+    {
+      name:"Colores",
+      route:"/colores",
+      icon:"pallete"
     }
   ];
 

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateColorComponent } from './colores/create-color/create-color.component';
+import { ListColoresComponent } from './colores/list-colores/list-colores.component';
 import { GraficosComponent } from './graficos/graficos.component';
 import { CreateProductosComponent } from './productos/create-productos/create-productos.component';
 import { ListProductosComponent } from './productos/list-productos/list-productos.component';
@@ -12,6 +14,9 @@ const routes: Routes = [
   {path:'productos',component:ListProductosComponent},
   {path:'nuevo-producto',component:CreateProductosComponent},
   {path:'editar-producto/:id',component:CreateProductosComponent},
+  {path:'colores',component:ListColoresComponent},
+  {path:'nuevo-color',component:CreateColorComponent},
+  {path:'editar-color/:id',component:CreateColorComponent},
   {path:'*',redirectTo:'productos',pathMatch:'full'},
 ];
 

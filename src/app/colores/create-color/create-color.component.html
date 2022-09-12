@@ -1,0 +1,15 @@
+<div class="container">
+    <form action="" [formGroup]="formColor">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Valor Hexadecimal</mat-label>
+            <input matInput formControlName="valor_hex" />
+        </mat-form-field>
+        <div class="ciruclo" [ngStyle]="{'background-color': formColor.controls['valor_hex'].value}">
+        </div>
+        <button class="m-2" mat-raised-button color="primary" (click)="onClickGuardar()" >Guardar</button>
+    </form>
+</div>

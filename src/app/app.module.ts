@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ListProductosComponent } from './productos/list-productos/list-productos.component';
 import { CreateProductosComponent } from './productos/create-productos/create-productos.component';
+import { ListColoresComponent } from './colores/list-colores/list-colores.component';
+import { CreateColorComponent } from './colores/create-color/create-color.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { CreateProductosComponent } from './productos/create-productos/create-pr
     ReportesComponent,
     GraficosComponent,
     ListProductosComponent,
-    CreateProductosComponent
+    CreateProductosComponent,
+    ListColoresComponent,
+    CreateColorComponent
   ],
   imports: [
     BrowserModule,
